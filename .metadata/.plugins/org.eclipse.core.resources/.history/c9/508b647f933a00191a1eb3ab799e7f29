@@ -1,0 +1,11 @@
+package com.library;
+
+public class main {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Library myLib = new Library("myLib");
+		myLib.addNewBook();
+//		myLib.findBook();
+	}
+}

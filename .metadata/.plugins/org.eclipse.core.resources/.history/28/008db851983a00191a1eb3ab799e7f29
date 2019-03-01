@@ -1,0 +1,12 @@
+package com.library;
+
+public class main {
+
+	public main(String[] args) {
+		// TODO Auto-generated method stub
+		Library myLib = new Library("myLib");
+		myLib.addNewBook();
+//		myLib.findBook(1);
+		myLib.borrowBook(1);
+	}
+}

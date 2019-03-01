@@ -1,0 +1,54 @@
+package com.library;
+import java.util.*;
+
+public class Program {
+	private int option;
+	public void static showMenu() {
+		Scanner input = new Scanner(System.in);
+		int id;
+		
+		do {
+			System.out.println("=== Main menu ===");
+			System.out.println("1. Show library information");
+			System.out.println("2. Add new book");
+			System.out.println("3. Find book");
+			System.out.println("4. Borrow a book");
+			System.out.println("5. Return a book");
+			System.out.println("6. Exit");
+			System.out.println("================");
+			System.out.println("Enter menu ID (1-6)");
+			option = input.nextInt();
+			input.nextLine();
+			Library newLib = new Library("New Library");
+			switch(option) {
+			case 1:
+				newLib.showLibraryInfo();
+				break;
+			case 2:
+				newLib.addNewBook();
+				break;
+			case 3:
+				id = input.nextInt();
+				newLib.findBook(id);
+				input.nextLine();
+				break;
+			case 4:
+				id = input.nextInt();
+				input.nextLine();
+				newLib.borrowBook(id);
+				break;
+			case 5:
+				id = input.nextInt();
+				input.nextLine();
+				newLib.returnBook(id);
+			}
+		} while (option != 6);
+		input.close();
+	}
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		showMenu();
+	}
+
+}

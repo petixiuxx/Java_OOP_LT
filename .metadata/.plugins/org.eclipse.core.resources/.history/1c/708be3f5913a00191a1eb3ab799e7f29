@@ -1,0 +1,78 @@
+package com.library;
+import java.util.*;
+
+public class Library {
+	private String libraryTitle;
+	private static int nbBooks;
+	private Book[] books;
+	public static final int MAX_NUMBER_BOOKS = 100;
+	
+	public Library(String libraryTitle) {
+		this.libraryTitle = libraryTitle;
+		this.books = new Book[MAX_NUMBER_BOOKS];
+		nbBooks = 0;
+	}
+
+	public String getLibraryTitle() {
+		return libraryTitle;
+	}
+	public static int getNbBooks() {
+		return nbBooks;
+	}
+	
+	public void setLibraryTitle(String libraryTitle) {
+		this.libraryTitle = libraryTitle;
+	}
+	
+	public static void setNbBooks(int nbBooks) {
+		Library.nbBooks = nbBooks;
+	}
+	
+	public void addNewBook() {
+		if (nbBooks >= MAX_NUMBER_BOOKS) {
+			System.out.println("The number of books exceeded the limit 1");
+			return;
+		}
+		Scanner input = new Scanner(System.in);
+		System.out.println("Enter book's information");
+		System.out.println("Book ID: ");
+		int newBookId = input.nextInt();
+		input.nextLine();
+		System.out.println("Book title: ");
+		String newBookTitle = input.nextLine();
+		
+		System.out.println("Ammount ");
+		int newBookNums = input.nextInt();
+		
+		if (MAX_NUMBER_BOOKS - nbBooks < newBookNums) {
+			System.out.println("The number of books exceeded the limit 2");
+			input.close();
+			return;
+		} 
+		Book newBook = new Book(newBookId, newBookTitle, newBookNums, newBookNums);
+		this.books[nbBooks] = newBook;
+		nbBooks++;
+		input.close();
+//		System.out.println("Finished");
+		return;
+	}
+	
+	public Boolean findBook() {
+		Scanner input = new Scanner(System.in);
+
+		System.out.println("Enter book's ID: ");
+		int bookId = input.nextInt();
+		
+		for (int i = 0; i < nbBooks; i++) {
+			if (books[i].getBookId() == bookId) {
+				books[i].showBookInfo();
+				input.close();
+				return true;
+			}
+		}
+		input.close();
+		return false;
+	}
+	
+	
+}
