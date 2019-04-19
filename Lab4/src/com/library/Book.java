@@ -32,6 +32,40 @@ public class Book {
 		System.out.println("Available: " + this.available);
 	}
 	
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ammount;
+		result = prime * result + available;
+		result = prime * result + bookId;
+		result = prime * result + ((bookTitle == null) ? 0 : bookTitle.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Book other = (Book) obj;
+		if (ammount != other.ammount)
+			return false;
+		if (available != other.available)
+			return false;
+		if (bookId != other.bookId)
+			return false;
+		if (bookTitle == null) {
+			if (other.bookTitle != null)
+				return false;
+		} else if (!bookTitle.equals(other.bookTitle))
+			return false;
+		return true;
+	}
+
 	public int getBookId() {
 		return bookId;
 	}
